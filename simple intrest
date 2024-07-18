@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print("Enter the principal: ");
+    double principal = input.nextDouble();
+    System.out.print("Enter the time: ");
+    double time = input.nextDouble();
+    boolean isSeniorCitizen;
+    System.out.print("Is the customer a senior citizen? (yes/no): ");
+    String seniorCitizen = input.next();
+    if (seniorCitizen.equalsIgnoreCase("yes")) {
+        isSeniorCitizen = true;
+    } else {
+        isSeniorCitizen = false;
+    }
+
+    double rate;
+    if (isSeniorCitizen) {
+        rate = 12 / 100;
+    } else {
+        rate = 10 / 100;
+    }
+
+    double simpleInterest = (principal * time * rate);
+
+    System.out.println("Principal: " + principal);
+    System.out.println("Time Duration: " + time);
+    System.out.println("Simple Interest: " + simpleInterest);
+
+    input.close();
+  }
+}
