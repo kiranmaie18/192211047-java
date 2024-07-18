@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows for matrix A: ");
+        int rowsA = scanner.nextInt();
+        System.out.print("Enter the number of columns for matrix A: ");
+        int colsA = scanner.nextInt();
+
+        System.out.print("Enter the number of rows for matrix B: ");
+        int rowsB = scanner.nextInt();
+        System.out.print("Enter the number of columns for matrix B: ");
+        int colsB = scanner.nextInt();
+
+        if (rowsA != rowsB || colsA != colsB) {
+            System.out.println("Matrix addition is not possible. Matrices must have the same dimensions.");
+            return;
+        }
+
+        int[][] matrixA = new int[rowsA][colsA];
+        int[][] matrixB = new int[rowsB][colsB];
+        int[][] result = new int[rowsA][colsA];
+
+        System.out.println("Enter elements of matrix A:");
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
+                matrixA[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("Enter elements of matrix B:");
+        for (int i = 0; i < rowsB; i++) {
+            for (int j = 0; j < colsB; j++) {
+                matrixB[i][j] = scanner.nextInt();
+            }
+        }
+
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
+                result[i][j] = matrixA[i][j] + matrixB[i][j];
+            }
+        }
+
+        System.out.println("Resultant matrix:");
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
