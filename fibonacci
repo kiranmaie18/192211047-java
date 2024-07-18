@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number N: ");
+        int n = scanner.nextInt();
+        scanner.close();
+
+        int sum = 0;
+        int a = 0, b = 1;
+        while (b <= n) {
+            if (b % 2 == 0) {
+                sum += b;
+            }
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+        System.out.println("Even sum of Fibonacci series till " + n + " is: " + sum);
+    }
+}
