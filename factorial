@@ -1,0 +1,15 @@
+public class Factorial {
+    public static void main(String[] args) {
+        int n = 5; // input number
+        long factorial = calculateFactorial(n);
+        System.out.println("Factorial of " + n + " is " + factorial);
+    }
+
+    public static long calculateFactorial(int n) {
+        long factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+}
