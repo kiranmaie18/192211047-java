@@ -1,0 +1,38 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class FrequencyFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the size of the array:");
+        int size = scanner.nextInt();
+        int[] array = new int[size];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        Map<Integer, Integer> frequencyMap = findFrequency(array);
+
+        System.out.println("Frequency of each element:");
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println("Element " + entry.getKey() + " appears " + entry.getValue() + " times");
+        }
+    }
+
+    public static Map<Integer, Integer> findFrequency(int[] array) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int element : array) {
+            if (frequencyMap.containsKey(element)) {
+                frequencyMap.put(element, frequencyMap.get(element) + 1);
+            } else {
+                frequencyMap.put(element, 1);
+            }
+        }
+
+        return frequencyMap;
+    }
+}
