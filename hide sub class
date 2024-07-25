@@ -1,0 +1,22 @@
+class SuperClass {
+    int x = 10;
+
+    void print() {
+        System.out.println("SuperClass: x = " + x);
+    }
+}
+
+class SubClass extends SuperClass {
+    int x = 20;
+
+    void print() {
+        System.out.println("SubClass: x = " + x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SubClass sub = new SubClass();
+        sub.print(); // prints: SubClass: x = 20
+    }
+}
