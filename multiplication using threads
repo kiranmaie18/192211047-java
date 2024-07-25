@@ -1,0 +1,56 @@
+// Define a class that extends Thread
+class MultiplicationTable extends Thread {
+    private int number;
+
+    // Constructor to initialize the number
+    public MultiplicationTable(int number) {
+        this.number = number;
+    }
+
+    // Override the run() method to display the multiplication table
+    @Override
+    public void run() {
+        System.out.println("Multiplication table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+            try {
+                // Sleep for 100 milliseconds to slow down the output
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted.");
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create two threads for displaying multiplication tables for 5 and 10
+        MultiplicationTable thread1 = new MultiplicationTable(5);
+        MultiplicationTable thread2 = new MultiplicationTable(10);
+
+        // Display the state of threads before starting them
+        System.out.println("State of thread1 before start: " + thread1.getState());
+        System.out.println("State of thread2 before start: " + thread2.getState());
+
+        // Start the threads
+        thread1.start();
+        thread2.start();
+
+        // Display the state of threads after starting them
+        System.out.println("State of thread1 after start: " + thread1.getState());
+        System.out.println("State of thread2 after start: " + thread2.getState());
+
+        // Wait for the threads to finish
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted.");
+        }
+
+        // Display the state of threads after they finish
+        System.out.println("State of thread1 after finish: " + thread1.getState());
+        System.out.println("State of thread2 after finish: " + thread2.getState());
+    }
+}
