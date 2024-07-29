@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class CombinedProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose an option:");
+        System.out.println("1. Convert days to years, weeks, and days");
+        System.out.println("2. Find the day of the week for a given date");
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.print("Enter the number of days: ");
+                double days = scanner.nextDouble();
+                convertDays(days);
+                break;
+            case 2:
+                System.out.print("Enter the day (1-31): ");
+                int day = scanner.nextInt();
+                System.out.print("Enter the month (1-12): ");
+                int month = scanner.nextInt();
+                System.out.print("Enter the year: ");
+                int year = scanner.nextInt();
+                System.out.println("Day of the week: " + findDayOfWeek(day, month, year));
+                break;
+            default:
+                System.out.println("Invalid option");
+        }
+
+        scanner.close();
+    }
+
+    public static void convertDays(double days) {
+        int years = (int) days / 365;
+        int weeks = (int) (days % 365) / 7;
+        int remainingDays = (int) (days % 365) % 7;
+
+        System.out.println("No. of years: " + years);
+        System.out.println("No. of weeks: " + weeks);
+        System.out.println("No. of days: " + remainingDays);
+    }
+
+    public static String findDayOfWeek(int day, int month, int year) {
+        LocalDate date = LocalDate.of(year, month, day);
+        return date.format(DateTimeFormatter.ofPattern("EEEE"));
+    }
+}
