@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class InvertedPyramidPattern {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the height of the pyramid
+        System.out.print("Enter the height of the pyramid: ");
+        int height = scanner.nextInt();
+
+        // Print the inverted pyramid pattern
+        printInvertedPyramid(height);
+
+        scanner.close();
+    }
+
+    public static void printInvertedPyramid(int height) {
+        for (int i = height; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println(); // Move to the next line
+        }
+    }
+}
