@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class HollowSquareDollarPattern {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the size of the square
+        System.out.print("Enter the size of the square: ");
+        int size = scanner.nextInt();
+
+        // Print the hollow square dollar pattern
+        printHollowSquareDollarPattern(size);
+
+        scanner.close();
+    }
+
+    public static void printHollowSquareDollarPattern(int size) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                // Print dollar sign on borders
+                if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
+                    System.out.print("$ ");
+                } else {
+                    System.out.print("  "); // Print space inside the square
+                }
+            }
+            System.out.println(); // Move to the next line
+        }
+    }
+}
